@@ -8,7 +8,6 @@ export const fetchText = createAsyncThunk(
     'text/getData',
      async (param= 4, format = 'html') => {
         const res = await axios.get(`https://baconipsum.com/api/?type=all-meat&paras=${param}&format=${format}`);
-         console.log(res);
 
          return res.data;
     }
