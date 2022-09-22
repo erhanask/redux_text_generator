@@ -6,8 +6,9 @@ import axios from "axios";
 
 export const fetchText = createAsyncThunk(
     'text/getData',
-     async (param= 4, format = 'html') => {
-        const res = await axios.get(`https://baconipsum.com/api/?type=all-meat&paras=${param}&format=${format}`);
+     async ({paras=4,format = 'html'}) => {
+        console.log(format);
+        const res = await axios.get(`https://baconipsum.com/api/?type=all-meat&paras=${paras}&format=${format}`);
 
          return res.data;
     }
@@ -16,7 +17,7 @@ export const fetchText = createAsyncThunk(
 const generatorSlice = createSlice({
     name: 'text',
     initialState: {
-        item: "",
+        item: [],
         status: 'idle',
     },
     reducers: {},
