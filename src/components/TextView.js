@@ -7,13 +7,13 @@ import {Textarea} from "@chakra-ui/react";
 export const TextView = () => {
 
     const dispatch = useDispatch();
-    const data = useSelector(textItem);
     const status = useSelector(textStatus);
     const text = useSelector(state => state.text.item);
 
+    console.log(status);
     useEffect(() => {
         if (status === 'idle')
-            dispatch(fetchText())
+            dispatch(fetchText({paras : 4, format: 'html'}))
     },[dispatch,status])
 
     return(

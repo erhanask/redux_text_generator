@@ -6,11 +6,11 @@ import axios from "axios";
 
 export const fetchText = createAsyncThunk(
     'text/getData',
-     async ({paras=4,format = 'html'}) => {
-        console.log(format);
+    async ({paras, format}) => {
+        console.log(paras,format);
         const res = await axios.get(`https://baconipsum.com/api/?type=all-meat&paras=${paras}&format=${format}`);
 
-         return res.data;
+        return res.data;
     }
 )
 

@@ -5,38 +5,48 @@ import {
     NumberIncrementStepper,
     NumberInput,
     NumberInputField,
-    NumberInputStepper, Select
+    NumberInputStepper, Select, Switch
 } from "@chakra-ui/react";
+import {useState} from "react";
 
 export const CountInput = () => {
     const dispatch = useDispatch();
+
+    const [paras, setParas] = useState('4');
+    const [format, setFormat] = useState();
+
+    const fetchHandler = () => {
+        dispatch(fetchText({paras: paras, format: format}))
+    }
 
     return (
         //states will be used on input values.
         <div className={`count-input-wrapper`} style={{width: '100%', textAlign: 'left'}}>
             <div style={{textAlign: 'left'}}>
                 <label style={{color: 'black', fontSize: 'smaller'}}>Paragraphs</label>
-                    <NumberInput
-                        onChange={(valueString) => dispatch(fetchText({paras:valueString,format: `html`}))}
-                        value={4}
-                        min={1}
-                        style={{color:'black'}}
-                    >
-                        <NumberInputField />
-                        <NumberInputStepper>
-                            <NumberIncrementStepper />
-                            <NumberDecrementStepper />
-                        </NumberInputStepper>
-                    </NumberInput>
+                <NumberInput
+                    onChange={(valueString) => {
+                        setParas(valueString);
+                        fetchHandler();
+                    }}
+                    value={paras}
+                    min={1}
+                    style={{color: 'black'}}
+                >
+                    <NumberInputField/>
+                    <NumberInputStepper>
+                        <NumberIncrementStepper/>
+                        <NumberDecrementStepper/>
+                    </NumberInputStepper>
+                </NumberInput>
             </div>
             <div style={{textAlign: 'left'}}>
-                <label style={{color: 'black', fontSize: 'smaller'}}>Type</label>
-                    <Select onChange={(e) => {
-                        dispatch(fetchText({paras:4,format: e.target.value}))
-                    }} style={{color: 'black',width: '100%', margin: '0px 0px 0px 5px'}}>
-                        <option value={`html`}>HTML</option>
-                        <option value={`text`}>TEXT</option>
-                    </Select>
+                <label style={{color: 'black', fontSize: 'smaller'}}>Turn To Text</label>
+                <Switch onChange={() => {
+                    setFormat(format === 'html' ? 'text' : 'html');
+                    fetchHandler();
+                }} style={{display: 'block'}}>
+                </Switch >
             </div>
         </div>
     )
