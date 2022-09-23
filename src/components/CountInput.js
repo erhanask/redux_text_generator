@@ -5,7 +5,7 @@ import {
     NumberIncrementStepper,
     NumberInput,
     NumberInputField,
-    NumberInputStepper, Select, Switch
+    NumberInputStepper,  Switch
 } from "@chakra-ui/react";
 import {useState} from "react";
 

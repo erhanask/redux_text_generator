@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {CountInput} from "./components/CountInput";
 import {TextView} from "./components/TextView";

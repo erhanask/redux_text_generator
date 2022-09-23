@@ -37,7 +37,6 @@ const generatorSlice = createSlice({
     }
 })
 
-export const textItem = state => state.text.item;
 export const textStatus = state => state.text.status;
 
 export default generatorSlice.reducer;

@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {fetchText, textItem, textStatus} from "../redux/generatorSlice";
+import {fetchText,  textStatus} from "../redux/generatorSlice";
 import {useEffect} from "react";
 import {Textarea} from "@chakra-ui/react";
 
